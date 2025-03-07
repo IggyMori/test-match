@@ -1,19 +1,32 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import svgr from 'vite-plugin-svgr';
+import { join } from 'path';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    svgr({
+      svgrOptions: {
+        exportType: 'named',
+        ref: true,
+        svgo: true,
+        memo: true,
+        titleProp: true,
+      },
+      include: '**/*.svg',
+    }),
+    tsconfigPaths(),
+  ],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@components': path.resolve(__dirname, 'src/components'),
-    },
+    alias: [
+      {
+        find: /~(.+)/,
+        replacement: join(process.cwd(), 'node_modules/$1'),
+      },
+    ],
   },
   server: {
     host: true,

@@ -9,8 +9,19 @@ module.exports = {
     sourceType: 'module',
   },
   settings: {
+    ecmaVersion: 'latest',
     react: {
       version: 'detect',
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      node: true,
+      typescript: {
+        alwaysTryTypes: true,
+        project: 'tsconfig.app.json',
+      },
     },
   },
   rules: {
