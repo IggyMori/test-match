@@ -38,10 +38,12 @@ const ScroreInfo = (props: ScoreInfoProps) => {
         {title}
       </Typography>
 
-      <Typography fontSize="12px" fontWeight={500} color="#FFFFFF">
-        {title === 'Points' && '+'}
-        <AnimatedNumbers value={value} />
-      </Typography>
+      <Stack direction="row" alignItems="center">
+        <Typography fontSize="12px" fontWeight={500} color="#FFFFFF">
+          {title === 'Points' && '+'}
+        </Typography>
+        <AnimatedNumbers value={value} fontSize={14} />
+      </Stack>
     </Stack>
   );
 };

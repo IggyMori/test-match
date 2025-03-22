@@ -14,10 +14,11 @@ const StyledRoot = styled('span')({
 
 export type AnimatedNumbersProps = ParseValueOptions & {
   value: Value;
+  fontSize?: number;
 };
 
 export const AnimatedNumbers = (props: AnimatedNumbersProps) => {
-  const { value, ...restOfProps } = props;
+  const { value, fontSize, ...restOfProps } = props;
   const throttledValue = useThrottle(value, 800);
 
   const characters = parseValue(throttledValue, props);
@@ -26,7 +27,7 @@ export const AnimatedNumbers = (props: AnimatedNumbersProps) => {
     <StyledRoot {...restOfProps}>
       {characters.map((character, index) => {
         if (isAvailableCharacter(character)) {
-          return <AnimatedNumber key={index} character={character} />;
+          return <AnimatedNumber key={index} character={character} fontSize={fontSize} />;
         }
 
         return character;

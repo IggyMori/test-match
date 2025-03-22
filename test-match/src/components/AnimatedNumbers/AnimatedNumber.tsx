@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, SxProps } from '@mui/material/styles';
 
 import { availableCharactersList, type AvailableCharacter } from './constants';
 import { getPosition } from './helpers';
@@ -37,16 +37,19 @@ const StyledPlaceholder = styled('span')({
 
 type AnimatedNumberProps = {
   character: AvailableCharacter;
+  fontSize?: number;
 };
 
 export const AnimatedNumber = memo((props: AnimatedNumberProps) => {
-  const { character } = props;
+  const { character, fontSize = 16 } = props;
 
   return (
     <StyledRoot>
       <StyledAnimatedNumberColumn position={getPosition(character)}>
         {availableCharactersList.map(availableCharacter => (
-          <StyledAnimatedNumber key={availableCharacter}>{availableCharacter}</StyledAnimatedNumber>
+          <StyledAnimatedNumber key={availableCharacter} style={{ fontSize }}>
+            {availableCharacter}
+          </StyledAnimatedNumber>
         ))}
       </StyledAnimatedNumberColumn>
       <StyledPlaceholder>{character}</StyledPlaceholder>
