@@ -1,8 +1,7 @@
 import { Button, ButtonProps, styled } from '@mui/material';
 import { ReactComponent as RefreshIcon } from '../assets/refresh.svg';
-import React from 'react';
-import { useQueryClient } from '@tanstack/react-query';
-import { MatchesQueryKeys } from '../api/matches.query-keys';
+import { useMatches } from '../hooks/useMatches';
+import useWebSocket from '../hooks/useWebSockets';
 
 const StyledButton = styled(Button)({
   backgroundColor: '#EB0237',
@@ -29,12 +28,18 @@ export const RefreshButton = (props: RefreshButtonProps) => {
   const { isLoading, disabled, ...restOfProps } = props;
 
   const isDisabled = isLoading || disabled;
-  const queryClient = useQueryClient();
+  const { refetch } = useMatches();
+  const socket = useWebSocket();
 
-  const handleOnclick = () => queryClient.invalidateQueries({ queryKey: MatchesQueryKeys.root });
+  const handleRefresh = () => {
+    refetch();
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      socket.send(JSON.stringify({ action: 'refresh' }));
+    }
+  };
 
   return (
-    <StyledButton {...restOfProps} onClick={handleOnclick} endIcon={<RefreshIcon />} disabled={isDisabled}>
+    <StyledButton {...restOfProps} onClick={handleRefresh} endIcon={<RefreshIcon />} disabled={isDisabled}>
       Обновить
     </StyledButton>
   );

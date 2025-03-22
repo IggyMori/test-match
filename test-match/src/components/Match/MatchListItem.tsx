@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, Collapse, IconButton, Stack, styled } from '@mui/material';
 import { ReactComponent as ArrowDownIcon } from '../../assets/dropdown_arrow_down.svg';
 import { ReactComponent as ArrowUpIcon } from '../../assets/dropdown_arrow_up.svg';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, Stack, styled, Typography } from '@mui/material';
 import { ReactComponent as AlertSvg } from '../assets/alert.svg';
 

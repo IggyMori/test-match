@@ -1,4 +1,3 @@
-import React from 'react';
 import { Stack } from '@mui/material';
 import { Team } from '../../api/matches.types';
 import { TeamDetails } from './TeamInfo/TeamDetails';

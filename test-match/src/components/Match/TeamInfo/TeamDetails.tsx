@@ -1,8 +1,7 @@
 import { Box, Card, Divider, Grid, Stack, styled, Typography } from '@mui/material';
 import { Player, Team } from '../../../api/matches.types';
 import { ReactComponent as AvatarIcon } from '../../../assets/avatar.svg';
-
-import React from 'react';
+import { AnimatedNumbers } from '../../AnimatedNumbers';
 
 type TeamDetailsProps = {
   team: Team;
@@ -14,7 +13,7 @@ type PlayerItemProps = {
 
 type ScoreInfoProps = {
   title: string;
-  value: string;
+  value: number;
 };
 
 type TeamStatisticsProps = {
@@ -40,7 +39,8 @@ const ScroreInfo = (props: ScoreInfoProps) => {
       </Typography>
 
       <Typography fontSize="12px" fontWeight={500} color="#FFFFFF">
-        {value}
+        {title === 'Points' && '+'}
+        <AnimatedNumbers value={value} />
       </Typography>
     </Stack>
   );
@@ -53,7 +53,7 @@ const PlayerItem = ({ player }: PlayerItemProps) => (
       <Typography fontSize="12px" fontWeight={600} color="#FFFFFF" noWrap>
         {player.username}
       </Typography>
-      <ScroreInfo title="Убийств:" value={String(player.kills)} />
+      <ScroreInfo title="Убийств:" value={player.kills} />
     </Stack>
   </StyledCard>
 );
@@ -86,15 +86,15 @@ export const TeamDetails = (props: TeamDetailsProps) => {
   const teamStatistics = [
     {
       title: 'Points',
-      value: `+${points}`,
+      value: points,
     },
     {
       title: 'Место',
-      value: String(place),
+      value: place,
     },
     {
       title: 'Всего убийств',
-      value: String(total_kills),
+      value: total_kills,
     },
   ];
   const xsValue = 12 / players.length;

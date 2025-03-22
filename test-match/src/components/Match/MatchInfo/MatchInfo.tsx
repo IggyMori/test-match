@@ -1,7 +1,7 @@
 import { Stack, Typography } from '@mui/material';
 import { Match } from '../../../api/matches.types';
-import React from 'react';
 import { MatchStatusLabel } from './MatchStatusLabel';
+import { AnimatedNumbers } from '../../AnimatedNumbers';
 
 type MatchInfoProps = {
   homeScore: Match['homeScore'];
@@ -14,9 +14,13 @@ export const MatchInfo = (props: MatchInfoProps) => {
 
   return (
     <Stack spacing={0.5}>
-      <Typography variant="body1" alignSelf="center" color="#FFFFFF" fontWeight={600}>
-        {`${homeScore} : ${awayScore}`}
-      </Typography>
+      <Stack direction="row" alignItems="center" spacing={1} justifyContent="center">
+        <AnimatedNumbers value={homeScore} />
+        <Typography variant="body1" alignSelf="center" color="#FFFFFF" fontWeight={600}>
+          :
+        </Typography>
+        <AnimatedNumbers value={awayScore} />
+      </Stack>
       <MatchStatusLabel status={status} />
     </Stack>
   );

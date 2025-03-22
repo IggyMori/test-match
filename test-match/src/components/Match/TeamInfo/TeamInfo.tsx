@@ -1,7 +1,6 @@
-import React from 'react';
 import { Stack, styled, Typography } from '@mui/material';
-import { Team } from '../../api/matches.types';
 import { ReactComponent as TeamSvg } from '../../../assets/team.svg';
+import { Team } from '../../../api/matches.types';
 
 type TeamInfoProps = {
   name: Team['name'];
