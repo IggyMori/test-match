@@ -40,7 +40,7 @@ const ScroreInfo = (props: ScoreInfoProps) => {
 
       <Stack direction="row" alignItems="center">
         <Typography fontSize="12px" fontWeight={500} color="#FFFFFF">
-          {title === 'Points' && '+'}
+          {title === 'Points:' && '+'}
         </Typography>
         <AnimatedNumbers value={value} fontSize={14} />
       </Stack>
@@ -87,15 +87,15 @@ export const TeamDetails = (props: TeamDetailsProps) => {
 
   const teamStatistics = [
     {
-      title: 'Points',
+      title: 'Points:',
       value: points,
     },
     {
-      title: 'Место',
+      title: 'Место:',
       value: place,
     },
     {
-      title: 'Всего убийств',
+      title: 'Всего убийств:',
       value: total_kills,
     },
   ];
