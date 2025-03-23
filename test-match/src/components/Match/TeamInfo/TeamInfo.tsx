@@ -7,17 +7,20 @@ type TeamInfoProps = {
   isHomeTeam?: boolean;
 };
 
-const StyledTypography = styled(Typography)({
+const StyledTypography = styled(Typography)(({ theme }) => ({
   fontWeight: 600,
   fontSize: '16px',
   color: '#FFFFFF',
-}) as typeof Typography;
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '12px',
+  },
+}));
 
 export const TeamInfo = (props: TeamInfoProps) => {
   const { name, isHomeTeam } = props;
 
   return (
-    <Stack direction="row" spacing={1.75} alignItems="center">
+    <Stack direction="row" spacing={{ xs: 0.75, sm: 1.75 }} alignItems="center">
       {isHomeTeam && <TeamSvg />}
       <StyledTypography>{name}</StyledTypography>
       {!isHomeTeam && <TeamSvg />}

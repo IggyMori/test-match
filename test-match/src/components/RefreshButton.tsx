@@ -39,7 +39,13 @@ export const RefreshButton = (props: RefreshButtonProps) => {
   };
 
   return (
-    <StyledButton {...restOfProps} onClick={handleRefresh} endIcon={<RefreshIcon />} disabled={isDisabled}>
+    <StyledButton
+      {...restOfProps}
+      fullWidth={true}
+      onClick={handleRefresh}
+      endIcon={<RefreshIcon />}
+      disabled={isDisabled}
+    >
       Обновить
     </StyledButton>
   );

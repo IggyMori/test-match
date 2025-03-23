@@ -8,7 +8,7 @@ type MatchStatusLabelProps = {
 };
 
 const StyledLabel = styled(Card, { shouldForwardProp: prop => prop !== 'status' })<MatchStatusLabelProps>(
-  ({ status }) => ({
+  ({ theme, status }) => ({
     display: 'flex',
     minWidth: '92px',
     justifyContent: 'center',
@@ -17,6 +17,10 @@ const StyledLabel = styled(Card, { shouldForwardProp: prop => prop !== 'status' 
     color: '#FFFFFF',
     padding: '6px 8px',
     backgroundColor: ColorByMatchStatus[status],
+
+    [theme.breakpoints.down('sm')]: {
+      padding: '4px 6px',
+    },
   }),
 ) as React.FC<CardProps & MatchStatusLabelProps>;
 
@@ -25,7 +29,7 @@ export const MatchStatusLabel = (props: MatchStatusLabelProps) => {
 
   return (
     <StyledLabel status={status}>
-      <Typography variant="body2" fontWeight={600}>
+      <Typography variant="body2" fontSize={{ xs: '12px', sm: '16px' }} fontWeight={600}>
         {NamesByMatchStatus[status]}
       </Typography>
     </StyledLabel>

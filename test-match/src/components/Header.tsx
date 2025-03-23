@@ -12,12 +12,24 @@ type HeaderProps = {
 export const Header = (props: HeaderProps) => {
   const { isLoading, ok = true } = props;
   return (
-    <Stack direction="row" justifyContent="space-between" alignItems="center">
-      <Stack direction="row" spacing={3}>
+    <Stack
+      direction={{ xs: 'column', sm: 'row' }}
+      spacing={{ xs: 1.25 }}
+      justifyContent="space-between"
+      alignItems="center"
+      sx={{ xs: { width: '100%' }, sm: { width: '100%' } }}
+    >
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={{ xs: 1.75, sm: 3 }}
+        width={{ xs: '100%', sm: 'auto' }}
+        justifyContent="center"
+        alignItems="center"
+      >
         <img src={matchTrackerPng} alt="Match Tracker" width={250} />
         <StatusFilter />
       </Stack>
-      <Stack direction="row" spacing={1.5}>
+      <Stack direction="row" spacing={1.5} width={{ xs: '100%', sm: 'auto' }}>
         {!ok && <ErrorInfoCard />}
         <RefreshButton isLoading={isLoading} />
       </Stack>

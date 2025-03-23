@@ -2,6 +2,7 @@ import { Box, Card, Divider, Grid, Stack, styled, Typography } from '@mui/materi
 import { Player, Team } from '../../../api/matches.types';
 import { ReactComponent as AvatarIcon } from '../../../assets/avatar.svg';
 import { AnimatedNumbers } from '../../AnimatedNumbers';
+import { minHeight } from '@mui/system';
 
 type TeamDetailsProps = {
   team: Team;
@@ -20,43 +21,54 @@ type TeamStatisticsProps = {
   teamStatistics: ScoreInfoProps[];
 };
 
-const StyledCard = styled(Card)({
+const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   borderRadius: '4px',
-  height: '52px',
+  minHeight: '52px',
   padding: '0 16px',
   minWidth: 0,
   backgroundColor: '#101318',
-}) as typeof Card;
+
+  [theme.breakpoints.down('sm')]: {
+    padding: '7px 8px',
+  },
+})) as typeof Card;
 
 const ScroreInfo = (props: ScoreInfoProps) => {
   const { title, value } = props;
   return (
     <Stack direction="row" spacing={1} alignItems="center">
-      <Typography fontSize="12px" fontWeight={500} color="#FAFAFA66">
+      <Typography fontSize="14px" fontWeight={500} color="#FAFAFA66">
         {title}
       </Typography>
 
       <Stack direction="row" alignItems="center">
-        <Typography fontSize="12px" fontWeight={500} color="#FFFFFF">
+        <Typography fontSize="14px" fontWeight={500} color="#FFFFFF">
           {title === 'Points:' && '+'}
         </Typography>
-        <AnimatedNumbers value={value} fontSize={14} />
+        <AnimatedNumbers value={value} fontSize={16} />
       </Stack>
     </Stack>
   );
 };
 
 const PlayerItem = ({ player }: PlayerItemProps) => (
-  <StyledCard component={Stack} direction="row" spacing={1} alignItems="center">
-    <AvatarIcon />
-    <Stack direction="row" flexGrow={1} alignItems="center" justifyContent="space-between" minWidth={0}>
+  <StyledCard
+    component={Stack}
+    direction={{ xs: 'column', sm: 'row' }}
+    spacing={1}
+    alignItems="center"
+    justifyContent="space-between"
+  >
+    <Stack direction="row" alignItems="center">
+      <AvatarIcon />
       <Typography fontSize="12px" fontWeight={600} color="#FFFFFF" noWrap>
         {player.username}
       </Typography>
-      <ScroreInfo title="Убийств:" value={player.kills} />
     </Stack>
+
+    <ScroreInfo title="Убийств:" value={player.kills} />
   </StyledCard>
 );
 

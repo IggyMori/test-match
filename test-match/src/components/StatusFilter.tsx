@@ -17,6 +17,7 @@ export const StatusFilter = () => {
 
   return (
     <Select
+      fullWidth
       value={filterStatusValue}
       onChange={handleChange}
       open={isOpen}

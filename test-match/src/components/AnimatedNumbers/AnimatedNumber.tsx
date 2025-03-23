@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { styled, SxProps } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 import { availableCharactersList, type AvailableCharacter } from './constants';
 import { getPosition } from './helpers';
