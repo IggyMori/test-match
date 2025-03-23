@@ -33,7 +33,7 @@ export const MatchListItem = (props: MatchListItemProps) => {
 
   return (
     <StyledRoot>
-      <Stack sx={{ width: '100%' }} spacing={{ xs: 2 }}>
+      <Stack sx={{ width: '100%' }} spacing={{ xs: 1 }}>
         <Stack direction="row" justifyContent="space-between" spacing={{ xs: 1 }}>
           <TeamInfo isHomeTeam={true} name={homeTeam.name} />
           <MatchInfo homeScore={homeScore} awayScore={awayScore} status={status} />

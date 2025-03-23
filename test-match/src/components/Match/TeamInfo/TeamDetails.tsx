@@ -60,7 +60,7 @@ const PlayerItem = ({ player }: PlayerItemProps) => (
     alignItems="center"
     justifyContent="space-between"
   >
-    <Stack direction="row" alignItems="center">
+    <Stack direction="row" alignItems="center" spacing={1}>
       <AvatarIcon />
       <Typography fontSize="12px" fontWeight={600} color="#FFFFFF" noWrap>
         {player.username}
