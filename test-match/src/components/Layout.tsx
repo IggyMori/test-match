@@ -1,13 +1,17 @@
 import { styled } from '@mui/material';
 import React from 'react';
 
-const StyledRoot = styled('div')({
+const StyledRoot = styled('div')(({ theme }) => ({
   alignSelf: 'stretch',
   display: 'flex',
   minHeight: '100vh',
   backgroundColor: '#06080C',
   padding: '42px',
-});
+
+  [theme.breakpoints.down('sm')]: {
+    padding: '16px',
+  },
+}));
 
 export type LayoutProps = React.PropsWithChildren;
 

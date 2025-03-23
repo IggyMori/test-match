@@ -1,6 +1,5 @@
 import { Box, BoxProps, CircularProgress, CircularProgressProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import React from 'react';
 
 type LoadingIndicatorProps = {
   slotProps?: {
