@@ -2,7 +2,6 @@ import { Box, Card, Divider, Grid, Stack, styled, Typography } from '@mui/materi
 import { Player, Team } from '../../../api/matches.types';
 import { ReactComponent as AvatarIcon } from '../../../assets/avatar.svg';
 import { AnimatedNumbers } from '../../AnimatedNumbers';
-import { minHeight } from '@mui/system';
 
 type TeamDetailsProps = {
   team: Team;
