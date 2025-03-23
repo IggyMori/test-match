@@ -29,7 +29,7 @@ export const Header = (props: HeaderProps) => {
         <img src={matchTrackerPng} alt="Match Tracker" width={250} />
         <StatusFilter />
       </Stack>
-      <Stack direction="row" spacing={1.5} width={{ xs: '100%', sm: 'auto' }}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} width={{ xs: '100%', sm: 'auto' }}>
         {!ok && <ErrorInfoCard />}
         <RefreshButton isLoading={isLoading} />
       </Stack>

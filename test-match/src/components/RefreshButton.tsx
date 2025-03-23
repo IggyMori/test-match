@@ -41,7 +41,7 @@ export const RefreshButton = (props: RefreshButtonProps) => {
   return (
     <StyledButton
       {...restOfProps}
-      fullWidth={true}
+      // fullWidth={{ xs: true, sm: false }}
       onClick={handleRefresh}
       endIcon={<RefreshIcon />}
       disabled={isDisabled}
