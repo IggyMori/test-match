@@ -13,7 +13,7 @@ const StyledLabel = styled(Card, { shouldForwardProp: prop => prop !== 'status' 
     minWidth: '92px',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '27px',
+    minHeight: '27px',
     color: '#FFFFFF',
     padding: '6px 8px',
     backgroundColor: ColorByMatchStatus[status],
@@ -29,7 +29,7 @@ export const MatchStatusLabel = (props: MatchStatusLabelProps) => {
 
   return (
     <StyledLabel status={status}>
-      <Typography variant="body2" fontSize={{ xs: '12px', sm: '16px' }} fontWeight={600}>
+      <Typography variant="body2" fontSize={{ xs: '10px', sm: '16px' }} fontWeight={600}>
         {NamesByMatchStatus[status]}
       </Typography>
     </StyledLabel>
